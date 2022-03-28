@@ -15,7 +15,7 @@ import java.awt.Stroke;
 
 public class PongPanel extends JPanel implements ActionListener, KeyListener {
 
-	private final static Color BACKGROUND_COLOUR = Color.BLACK;
+	private final static Color BACKGROUND_COLOUR = Color.WHITE;
 	private final static int TIMER_DELAY = 5;
 	private final static int BALL_MOVEMENT_SPEED = 5;
 	private final static int POINTS_TO_WIN = 3;
@@ -94,6 +94,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			paintSprite(g, paddle1);
 			paintSprite(g, paddle2);
 			paintScores(g);
+			paintWinner(g);
 		}
 	}
 
