@@ -2,7 +2,7 @@ package pong;
 
 import javax.swing.JFrame;
 
-public class pong extends JFrame {
+public class Pong extends JFrame {
 
 	private final static String WINDOW_TITLE = "Pong";
 	private final static int WINDOW_WIDTH = 800;
@@ -13,7 +13,7 @@ public class pong extends JFrame {
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			
 			public void run() {
-				new pong();	
+				new Pong();	
 			}
 			});
 		}
@@ -21,12 +21,12 @@ public class pong extends JFrame {
 		
 	
 
-	public pong() {
+	public Pong() {
 
 		setTitle(WINDOW_TITLE);
 		setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 		setResizable(false);
-		add(new pongPanel());
+		add(new PongPanel());
 		setVisible(true);
 		setAlwaysOnTop(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);

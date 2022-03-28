@@ -3,7 +3,7 @@ package pong;
 import java.awt.Color;
 import java.awt.Rectangle;
 
-public class sprite {
+public class Sprite {
 
 	private int xPosition, yPosition;
 	private int xVelocity, yVelocity;
@@ -37,12 +37,12 @@ public class sprite {
 		         this.yPosition = yPosition;
 		     }
 
-	public void setYPosition(int newY, int pannelHeight) {
+	public void setYPosition(int newY, int panelHeight) {
 		yPosition = newY;
 		if (yPosition <0){
 			yPosition = 0;
-			}else if (yPosition + height > pannelHeight) {
-				yPosition = pannelHeight - height;
+			}else if (yPosition + height > panelHeight) {
+				yPosition = panelHeight - height;
 			}
 		}
 
@@ -97,11 +97,11 @@ public class sprite {
 	
 	 public void resetToInitialPosition() {
 		        setXPosition(initialXPosition);
-		        setXPosition(initialYPosition);
+		        setYPosition(initialYPosition);
 	 }
 	 
 	 //crate rectangle
 	 public Rectangle getRectangle() {
-		          return new Rectangle(getXPosition(), getXPosition(), getWidth(), getHeight());
+		          return new Rectangle(getXPosition(), getYPosition(), getWidth(), getHeight());
 		      }
 }

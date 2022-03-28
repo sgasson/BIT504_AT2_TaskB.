@@ -12,17 +12,29 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Stroke;
 
-public class pongPanel extends JPanel implements ActionListener, KeyListener {
+public class PongPanel extends JPanel implements ActionListener, KeyListener {
 
 	private final static Color BACKGROUND_COLOUR = Color.BLACK;
 	private final static int TIMER_DELAY = 5;
-
-	public pongPanel() {
+	
+	boolean gameInitialised = false;
+	Ball ball;
+	Paddle paddle1;
+	Paddle paddle2;
+	
+	GameState gameState = GameState.Initialising;
+	
+	public PongPanel() {
 		setBackground(BACKGROUND_COLOUR);
 		Timer timer = new Timer(TIMER_DELAY, this);
 		timer.start();
-
 	}
+	
+	public void createObjects() {
+		          ball = new Ball(getWidth(), getHeight());
+		          paddle1 = new Paddle(Player.One, getWidth(), getHeight());
+		          paddle2 = new Paddle(Player.Two, getWidth(), getHeight());
+		   }
 
 	@Override
 	public void keyTyped(KeyEvent event) {
@@ -46,6 +58,11 @@ public class pongPanel extends JPanel implements ActionListener, KeyListener {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		paintDottedLine(g);
+		if(gameState != GameState.Initialising) {
+			             paintSprite(g, ball);
+			             paintSprite(g, paddle1);
+			             paintSprite(g, paddle2);
+		}
 	}
 
 	@Override
@@ -64,10 +81,23 @@ public class pongPanel extends JPanel implements ActionListener, KeyListener {
 		}
 
 	private void update() {
+		  switch(gameState) {
+		                 case Initialising: {
+		                     createObjects();
+		                    gameState = GameState.Playing;
+		                     break;
+		                 }
+		                 case Playing: {
+		                     break;
+		               }
+		               case GameOver: {
+		                  break;
+		               }
+		           }
 	}
-
-	{
-
-	}
-
+	
+	private void paintSprite(Graphics g, Sprite sprite) {
+		      g.setColor(sprite.getColor());
+		      g.fillRect(sprite.getXPosition(), sprite.getYPosition(), sprite.getWidth(), sprite.getHeight());
+}
 }
