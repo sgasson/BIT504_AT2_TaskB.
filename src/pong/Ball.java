@@ -16,3 +16,4 @@ public class Ball extends Sprite {
 		resetToInitialPosition();
 	}
 }
+  //test
